@@ -1,0 +1,60 @@
+/* just to be able to see the div, this is your starting point*/
+/* You can create your own classess, animations etc*/
+
+/*************STYLING ELEMENTS*************/
+
+* {
+  /* I used box-sizing for easier calculations in the future */
+  box-sizing: border-box;
+}
+:root {
+  /* I used this for every animation because I had to center div each time i use transform. this is the simplest solution i have found so far. */
+  --centerDiv: translate(-50%, -50%);
+}
+body {
+  /* our height takes the whole viewport */
+  height: calc(100vh);
+  padding: 0;
+  margin: 0;
+}
+#to-be-animated {
+  /* I used position absolute to center the div. Used transform:translate because it was centered according to top and left edges.*/
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: var(--centerDiv);
+}
+button {
+  padding: 0.5rem;
+}
+
+/*************ANIMATIONS*************/
+
+.spin {
+  animation: spin 1s linear; /* takes 1 second as wanted in the task*/
+}
+.up-and-down {
+  animation: moveUpAndDown 1s linear; /* takes 1 second as wanted in the task*/
+}
+
+@keyframes spin {
+  100% {
+    /* rotating the div by 360 degrees.*/
+    transform: var(--centerDiv) rotate(360deg);
+  }
+}
+@keyframes moveUpAndDown {
+  0%,
+  100% {
+    /* in the starting position at 0% and 100% */
+    transform: var(--centerDiv) translateY(0%);
+  }
+  50% {
+    /* According to my calculations, due to body taking 100 vh, half of div is centered at 50vh. Additionally, height of div is 200px and half of it is 100px. We are moving the div by 50vh but have to add 100px so it hits the top and not more or less.*/
+    transform: var(--centerDiv) translateY(calc(-50vh + 100px));
+  }
+}
+/* translateY(calc(-50vh + 100px)); */
