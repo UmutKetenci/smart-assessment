@@ -1,0 +1,110 @@
+/* Do a basic table styling for borders, doesn't need to be exactly same with the gif */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@100;300;400&display=swap"); /*imported Roboto and Open Sans from Google Fonts */
+/****** ELEMENT STYLING ******/
+* {
+  /*Default margin padding and box-sizing for easier calculation */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.app-container {
+  margin-top: 2rem;
+}
+:root {
+  /* My theme and custom values */
+  --tbl-clr-primary: rgb(202, 180, 180);
+  --tbl-clr-secondary: rgb(168, 102, 102);
+  --tbl-clr-third: rgb(182, 159, 159);
+  --transition: all 0.2s linear;
+  font-family: "Open Sans", sans-serif;
+}
+.main-table {
+  width: 70vw;
+  margin: 0 auto; /* To center the table */
+  background-color: var(
+    --tbl-clr-primary
+  ); /* Setting background as my primary color. */
+  text-align: left;
+  /* border-collapse: collapse; */
+  border-radius: 1rem;
+  overflow: hidden; /* So that background of cells don't show on the edges  */
+  height: calc(
+    80vh - 2rem
+  ); /* Not an important calculation. Just tried to make the page look prettier. */
+}
+
+tr:nth-child(odd) {
+  background-color: var(
+    --tbl-clr-secondary
+  ); /* Setting odd rows background's as my secondary color.*/
+}
+thead th {
+  background-color: var(--tbl-clr-third); /* Setting header as my third color*/
+  font-size: 1.2rem;
+}
+td {
+  padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+  border: 1px solid transparent;
+  font-weight: 500;
+  font-size: large;
+}
+thead th {
+  text-align: center;
+}
+td:first-child,
+td:last-child,
+td:nth-child(2) {
+  /* Centering my first second and last row in the cells.*/
+  text-align: center;
+}
+tbody th:last-child {
+  text-transform: uppercase;
+}
+.btn-container {
+  margin: 0 auto;
+  width: 70vw;
+  text-align: center;
+}
+button {
+  background-color: transparent;
+  border: 2px solid rgb(44, 44, 44);
+  padding: 1rem;
+  transition: var(--transition);
+  cursor: pointer;
+  border-radius: 60%;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1rem;
+  z-index: 5; /*Making sure the buttons are in the front if they collapsed with the table.*/
+}
+button:hover {
+  background-color: var(--tbl-clr-third);
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.75);
+}
+.active {
+  /*Change color of active button*/
+  background-color: var(--tbl-clr-secondary);
+}
+.active:hover {
+  /*Don't change the color of active button when hovering over it.*/
+  background-color: var(--tbl-clr-secondary);
+}
+
+/****** RESPONSIVE ******/
+@media screen and (max-width: 768px) {
+  * {
+    font-size: 0.9rem; /*Smaller than the original size since page is smaller*/
+  }
+  thead th {
+    font-size: 1rem; /*Smaller than the original size since page is smaller*/
+  }
+  button {
+    font-size: 0.75rem; /*Smaller than the original size since page is smaller*/
+    background-color: rgba(
+      236,
+      236,
+      236,
+      0.575
+    ); /*Making sure the buttons are more visible if they collapsed with the table. I changed the color from transparent to whiter color*/
+  }
+}
